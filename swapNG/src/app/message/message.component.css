@@ -1,0 +1,5 @@
+a.icon:hover, a.icon:visited, a.icon:link, a.icon:active
+{
+    text-decoration: none;
+    color:inherit;
+}

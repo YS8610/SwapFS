@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap ="3px" >
+  <mat-card *ngFor="let swap of swapReqList" fxFlexAlign="stretch">
+    <mat-card-title><mat-icon>{{swap.classType=="3a" || swap.classType=="3"?"directions_car":"two_wheeler" }} </mat-icon> {{swap.sch|uppercase }} {{swap.classType}} {{swap.lessonType}}</mat-card-title>
+    <mat-card-subtitle>{{swap.lesson}} </mat-card-subtitle>
+    <mat-card-subtitle ><mat-icon>event</mat-icon> {{swap.lessonDate}}</mat-card-subtitle>
+    <mat-card-subtitle><mat-icon>schedule</mat-icon> {{ swap.lessonTime }}</mat-card-subtitle>
+    <mat-card-subtitle><mat-icon>person</mat-icon> {{ swap.chatid }}</mat-card-subtitle>
+    <mat-card-content>{{swap.userComment}}</mat-card-content>
+    <mat-card-footer>
+      <mat-card-actions align="end">
+        <button mat-button (click)="onSwapReq(swap.id)"  matTooltip="description"><mat-icon mat-flat-button color="primary">description</mat-icon></button>
+        <button mat-button (click)="onMessage(swap.id)"  matTooltip="message"><mat-icon mat-flat-button color="primary">message</mat-icon></button>
+      </mat-card-actions>
+    </mat-card-footer>
+  </mat-card>
+</div>

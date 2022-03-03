@@ -1,0 +1,14 @@
+mat-form-field{
+  width:300px;
+  /* margin: 3px; */
+}
+
+.buttonrow{
+  width:300px;
+}
+
+a.icon:hover, a.icon:visited, a.icon:link, a.icon:active
+{
+    text-decoration: none;
+    color:inherit;
+}

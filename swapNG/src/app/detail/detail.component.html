@@ -1,0 +1,19 @@
+<app-header></app-header>
+<mat-card fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5px" >
+  <mat-card-header >
+
+      <mat-card-title ><mat-icon>{{swapReq.classType=="3a" || swapReq.classType=="3a"?"directions_car":"two_wheeler" }} </mat-icon>{{swapReq.sch|uppercase }} {{swapReq.classType}} {{swapReq.lessonType}}</mat-card-title>
+      <mat-card-subtitle >{{swapReq.lessonType=='prac' && (swapReq.classType=='2b' || swapReq.classType=='2a' ||swapReq.classType=='2')?'Lesson ' + swapReq.lesson:swapReq.lesson}}</mat-card-subtitle>
+      <mat-card-subtitle ><mat-icon>event</mat-icon> {{swapReq.lessonDate}}</mat-card-subtitle>
+      <mat-card-subtitle ><mat-icon>schedule</mat-icon> {{ swapReq.lessonTime }}</mat-card-subtitle>
+      <mat-card-subtitle ><mat-icon>person</mat-icon> {{ swapReq.chatid }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src = "" alt = "">
+  <mat-card-content >
+    {{swapReq.userComment}}
+  </mat-card-content>
+  <mat-card-actions align="end">
+      <button mat-button (click)="onHome()"><mat-icon mat-flat-button color="primary" matTooltip="Home">home</mat-icon></button>
+      <button mat-button (click)="onMessage()"><mat-icon mat-flat-button color="primary" matTooltip="messsage">message</mat-icon></button>
+  </mat-card-actions>
+</mat-card>

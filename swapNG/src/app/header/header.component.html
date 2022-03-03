@@ -1,0 +1,10 @@
+<mat-toolbar >
+  <button mat-icon-button >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button mat-icon-button routerLink="/" > <h2>SwapLesson <mat-icon>swap_horizontal_circle</mat-icon></h2>  </button>
+  <span class="example-spacer"></span>
+  <button mat-icon-button type="button" (click)="onAdd()" matTooltip="Add Swap Request"> <mat-icon mat-flat-button color="primary">add_circle</mat-icon> </button>
+  <button mat-icon-button type="button" > <mat-icon mat-flat-button color="primary" matTooltip="Telegram bot link"><a [href]="telegramLink" target="_blank">smart_toy</a></mat-icon></button>
+</mat-toolbar>
+

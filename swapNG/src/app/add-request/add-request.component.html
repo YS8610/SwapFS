@@ -1,0 +1,78 @@
+<app-header></app-header>
+<form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5px" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <!-- input for entering chatid for notification and user identification -->
+  <mat-form-field >
+    <mat-label for="chatid">Chatid:</mat-label>
+    <input matInput placeholder="Ex. 45852325" type="text" name="chatid" formControlName="chatid" #f>
+    <mat-hint *ngIf="!form.get('chatid')!.valid && form.get('chatid')!.touched">Hint: Please get chatid from telegram bot</mat-hint>
+    <mat-error *ngIf="form.get('chatid')!.hasError('pattern')">Chatid consists of numbers only</mat-error>
+  </mat-form-field>
+  <div fxLayout="row" >
+    <button type="button" (click)="onTest(f.value)" [disabled]="!form.get('chatid')!.valid || form.get('chatid')!.hasError('pattern')" style="margin-right: 15px;" mat-raised-button matTooltip="you should received a msg when verified"><mat-icon mat-flat-button color="primary" >quiz</mat-icon> Verify your Chatid</button>
+    <button type="button" style="margin-left: 15px;" matTooltip="Telegram Bot link" mat-raised-button><mat-icon mat-flat-button color="primary" ><a [href]="telegramLink" target="_blank" class="icon">smart_toy</a></mat-icon></button>
+  </div>
+  <!-- dropdown for sch -->
+  <mat-form-field >
+    <mat-label for="sch">School:</mat-label>
+    <mat-select name="sch" id="sch" formControlName="sch">
+      <mat-option value="cdc">CDC</mat-option>
+    </mat-select>
+    <mat-hint *ngIf="!form.get('sch')!.valid && form.get('sch')!.touched">Hint: Please select from the dropdown menu</mat-hint>
+  </mat-form-field>
+  <!-- dropdown for lesson type -->
+  <mat-form-field >
+    <mat-label for="lessonType">Lesson Type:</mat-label>
+    <mat-select name="lessonType" id="lessonType" #lessontype (selectionChange)="onLessontypeChange(lessontype.value)" formControlName="lessonType">
+      <mat-option value="prac">Practical</mat-option>
+      <mat-option value="sim">Simulator for School learner only</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- dropdown for license class -->
+  <mat-form-field >
+    <mat-label for="classType">Class:</mat-label>
+    <mat-select name="classType" id="classType" #classtyp (selectionChange)="onClassTypeChange(classtyp.value)" formControlName="classType">
+      <mat-option value="2b">Class 2b</mat-option>
+      <mat-option value="3a">Class 3a</mat-option>
+      <mat-option value="3">Class 3</mat-option>
+      <mat-option value="2a">Class 2a</mat-option>
+      <mat-option value="2">Class 2</mat-option>
+    </mat-select>
+    <mat-hint *ngIf="!form.get('classType')!.valid && form.get('classType')!.touched">Hint: Please select from the dropdown menu</mat-hint>
+  </mat-form-field>
+  <!-- Lesson -->
+  <mat-form-field >
+    <mat-label for="lesson">Lesson:</mat-label>
+    <mat-select name="lesson" id="lesson" formControlName="lesson">
+      <mat-option value={{l}} *ngFor="let l of lesson">{{l}}</mat-option>
+    </mat-select>
+    <mat-hint *ngIf="!form.get('lesson')!.valid && form.get('lesson')!.touched">Hint: Please select from the dropdown menu</mat-hint>
+  </mat-form-field>
+  <!-- datepicker -->
+  <mat-form-field >
+    <mat-label>Date of your lesson to be swapped:</mat-label>
+    <input matInput [matDatepicker]="picker" [min]="minDate" formControlName="date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-hint *ngIf="!form.get('date')!.valid && form.get('date')!.touched">Hint: Please select a date or invalid date entered</mat-hint>
+  </mat-form-field>
+  <!-- timing -->
+  <mat-form-field >
+    <mat-label for="time">Time:</mat-label>
+    <mat-select name="time" id="time" formControlName="time">
+      <mat-option value={{t}} *ngFor="let t of session">{{t}}</mat-option>
+    </mat-select>
+    <mat-hint *ngIf="!form.get('time')!.valid && form.get('time')!.touched">Hint: Please select a time range</mat-hint>
+  </mat-form-field>
+  <!-- text area Comment -->
+  <mat-form-field >
+    <mat-label for="comment">Comment:</mat-label>
+    <textarea matInput placeholder="Looking to swap my slot to..." formControlName="comment"></textarea>
+    <mat-hint *ngIf="!form.get('comment')!.valid && form.get('comment')!.touched">Hint: Please insert what you want to exchange to</mat-hint>
+  </mat-form-field>
+  <div fxLayoutAlign="space-between center" class="buttonrow">
+    <button mat-flat-button color="primary" (click)="onBack()" mat-raised-button matTooltip="Home"><mat-icon>home</mat-icon></button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid" mat-raised-button matTooltip="Submit"><mat-icon>note_add</mat-icon></button>
+  </div>
+</form>
+
+
