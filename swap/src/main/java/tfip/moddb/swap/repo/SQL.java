@@ -12,20 +12,6 @@ public class SQL {
     public final static String SQL_POST_REQ = "insert into swaprequests(chatid,usercomment,id_schlesson,lesson,lessondate,lessontime) values(?,?,?,?,?,?)";
 
     public final static String SQL_GET_REQ_BY_CHATID = "select res.id,res.chatid,res.usercomment,res.lesson,res.lessondate,res.lessontime,sch.sch,sch.classtype,sch.lessontype from swaprequests as res inner join schlesson as sch on res.id_schlesson=sch.id_schlesson where res.chatid = ? order by res.lessondate";
+
+    public final static String SQL_DELETE_REQ_BY_ID = "delete from swaprequests where id = ?";
 }
-
-
-// chatid string
-// sch string only (CDC)
-// classType string (Class 2b,2a,2 and class 3a, 3) 
-
-// lessonType string (Sim and prac)
-// lesson (1-8 , carlesson, sim)
-// date date
-// time string
-// comment string 
-// chatid_0 primary key
-
-// insert into swaprequests(chatid,usercomment,id_schlesson,lesson,lessondate,lessontime) values
-// (47435630,'finding learner to swap lesson for next week anytime',1,'carLesson','2022-03-21','12.45pm-2.25pm'),
-// (47435630,'finding learner to swap lesson for next week anytime',10,'sim','2022-03-21','12.45pm-2.25pm');
