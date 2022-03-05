@@ -20,6 +20,7 @@ public class SwapRepo {
 
     Date date = new Date();
 
+    // ensure that lesson date must be in the future not past
     private List<SwapModel> filterSwap(List<SwapModel> swaplist){
         List<SwapModel> filteredSwapModels =swaplist.stream()
             .filter(swap -> swap.getLessonDate().after(date) )
@@ -28,6 +29,7 @@ public class SwapRepo {
     }
 
 
+    // get all swap id with different option
     public List<SwapModel> getAllSwap(){
         final List<SwapModel> swapModels = new LinkedList<>();
         final SqlRowSet rs=  template.queryForRowSet(SQL_GET_ALL_REQ);
@@ -38,7 +40,8 @@ public class SwapRepo {
         return filterSwap(swapModels);
     }
 
-
+    
+    // get all swap id with different option
     public List<SwapModel> getAllSwap(int limit){
         final List<SwapModel> swapModels = new LinkedList<>();
         final SqlRowSet rs=  template.queryForRowSet(SQL_GET_ALL_REQ_BY_LIMIT,limit);
@@ -50,6 +53,7 @@ public class SwapRepo {
         }
 
 
+    // get all swap id with different option
     public List<SwapModel> getAllSwap(int limit, int offset){
         final List<SwapModel> swapModels = new LinkedList<>();
         final SqlRowSet rs=  template.queryForRowSet(SQL_GET_ALL_REQ_BY_LIMIT_BY_OFFSET,limit,offset);
@@ -61,9 +65,9 @@ public class SwapRepo {
     }
 
 
+    // find by swap id 
     public SwapModel getSwapByID(int id){
         final SqlRowSet rs=  template.queryForRowSet(SQL_GET_REQ_BY_ID,id);
-
         while(rs.next()){
             SwapModel swapModel = SwapModel.populate(rs);
             return swapModel;
@@ -71,7 +75,7 @@ public class SwapRepo {
         return null;
     }
 
-
+    // adding of swap model
     public boolean addSwap(SwapModel swapModel){
         int id_schlesson = 0;
         if (swapModel.getSch().equalsIgnoreCase("cdc") && swapModel.getLessonType().equalsIgnoreCase("prac")){
@@ -94,4 +98,22 @@ public class SwapRepo {
         }
         return false;
     }
+
+
+    // getting all swap request from chatid 
+    public List<SwapModel> getSwapbyChatid(int chatid){
+        final List<SwapModel> swapModels = new LinkedList<>();
+        final SqlRowSet rs =  template.queryForRowSet(SQL_GET_REQ_BY_CHATID,chatid);
+        while(rs.next()){
+            swapModels.add(SwapModel.populate(rs));
+        }
+        return filterSwap(swapModels);
+    }
+
+
+    // delete swap request by id
+    public boolean deleteSwapbyID(int id){
+        int add = template.update(SQL_DELETE_REQ_BY_ID, id);
+        return add>0;
+    } 
 }
