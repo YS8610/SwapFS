@@ -9,13 +9,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import static tfip.moddb.swap.Constants.*;
+
 
 @Service
 public class TelegramService {
     public boolean sendMsg(String chatid, String msg){
         RestTemplate template = new RestTemplate();
-        String url = "https://telegram.arcanetrading.co/camper?chatid="+ chatid +"&msg="+msg;
+        String url = WEBSITE_TELEGRAM + "?chatid=" + chatid +"&msg="+msg;
 
+        
         RequestEntity<Void> req = RequestEntity.get(url)
             .accept(MediaType.APPLICATION_JSON)
             .build();
