@@ -1,16 +1,31 @@
 <app-header></app-header>
 <mat-card fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5px" >
   <mat-card-header >
-      <mat-card-title ><mat-icon>{{swapReq.classType=="3a" || swapReq.classType=="3a"?"directions_car":"two_wheeler" }} </mat-icon>{{swapReq.sch|uppercase }} {{swapReq.classType}} {{swapReq.lessonType}}</mat-card-title>
-      <mat-card-subtitle >{{swapReq.lessonType=='prac' && (swapReq.classType=='2b' || swapReq.classType=='2a' ||swapReq.classType=='2')?'Lesson ' + swapReq.lesson:swapReq.lesson}}</mat-card-subtitle>
-      <mat-card-subtitle ><mat-icon>event</mat-icon> {{swapReq.lessonDate}}</mat-card-subtitle>
-      <mat-card-subtitle ><mat-icon>schedule</mat-icon> {{ swapReq.lessonTime }}</mat-card-subtitle>
-      <mat-card-subtitle ><mat-icon>person</mat-icon> {{ swapReq.chatid }}</mat-card-subtitle>
-      <mat-card-subtitle ><mat-icon>note</mat-icon>{{swapReq.userComment}}</mat-card-subtitle>
+      <mat-card-title >
+        <mat-icon>
+          {{swapReq.classType=="3a" || swapReq.classType=="3a"?"directions_car":"two_wheeler" }}
+        </mat-icon>
+        {{swapReq.sch|uppercase }} {{swapReq.classType}} {{swapReq.lessonType}}
+      </mat-card-title>
+      <mat-card-subtitle >
+        {{swapReq.lessonType=='prac' && (swapReq.classType=='2b' || swapReq.classType=='2a' ||swapReq.classType=='2')?'Lesson ' + swapReq.lesson:swapReq.lesson}}
+      </mat-card-subtitle>
+      <mat-card-subtitle >
+        <mat-icon>event</mat-icon> {{swapReq.lessonDate}}
+      </mat-card-subtitle>
+      <mat-card-subtitle >
+        <mat-icon>schedule</mat-icon> {{ swapReq.lessonTime }}
+      </mat-card-subtitle>
+      <mat-card-subtitle >
+        <mat-icon>person</mat-icon> {{ swapReq.chatid }}
+      </mat-card-subtitle>
+      <mat-card-subtitle >
+        <mat-icon>note</mat-icon>{{swapReq.userComment}}
+      </mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image src = "" alt = "">
+  <mat-divider></mat-divider>
   <mat-card-content >
-    <mat-divider></mat-divider>
     <form [formGroup]="msgForm" (ngSubmit)="onSend()">
       <mat-form-field >
         <mat-label for="contact">Contact:</mat-label>
@@ -21,11 +36,18 @@
         <mat-label for="msg">Message:</mat-label>
         <textarea  matInput name="msg" placeholder="Please includes your contact detail/telegram username" formControlName="msg" rows="4" cols="50"></textarea>
       </mat-form-field>
-      <button mat-button type="submit" [disabled]="msgForm.invalid" matTooltip="Send"><mat-icon >send</mat-icon></button>
+      <button mat-button type="submit" [disabled]="msgForm.invalid" matTooltip="Send" (click)="openSnackBar()"><mat-icon >send</mat-icon></button>
+
     </form>
   </mat-card-content>
   <mat-card-actions align="end">
-      <button mat-button (click)="onHome()"><mat-icon mat-flat-button color="primary" matTooltip="home">home</mat-icon></button>
-      <button mat-button><mat-icon mat-flat-button color="primary" matTooltip="telegram bot"><a [href]="telegramLink" target="_blank" class="icon">smart_toy</a></mat-icon></button>
+      <button mat-button (click)="onHome()">
+        <mat-icon mat-flat-button color="primary" matTooltip="home">home</mat-icon>
+      </button>
+      <button mat-button>
+        <mat-icon mat-flat-button color="primary" matTooltip="telegram bot">
+          <a [href]="telegramLink" target="_blank" class="icon">smart_toy</a>
+        </mat-icon>
+      </button>
   </mat-card-actions>
 </mat-card>

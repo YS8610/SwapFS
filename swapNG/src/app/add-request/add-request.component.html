@@ -4,12 +4,20 @@
   <mat-form-field >
     <mat-label for="chatid">Chatid:</mat-label>
     <input matInput placeholder="Ex. 45852325" type="text" name="chatid" formControlName="chatid" #f>
-    <mat-hint *ngIf="!form.get('chatid')!.valid && form.get('chatid')!.touched">Hint: Please get chatid from telegram bot</mat-hint>
+    <mat-hint *ngIf="!form.get('chatid')!.valid && form.get('chatid')!.touched">
+      Hint: Please get chatid from telegram bot
+    </mat-hint>
     <mat-error *ngIf="form.get('chatid')!.hasError('pattern')">Chatid consists of numbers only</mat-error>
   </mat-form-field>
   <div fxLayout="row" >
-    <button type="button" (click)="onTest(f.value)" [disabled]="!form.get('chatid')!.valid || form.get('chatid')!.hasError('pattern')" style="margin-right: 15px;" mat-raised-button matTooltip="you should received a msg when verified"><mat-icon mat-flat-button color="primary" >quiz</mat-icon> Verify your Chatid</button>
-    <button type="button" style="margin-left: 15px;" matTooltip="Telegram Bot link" mat-raised-button><mat-icon mat-flat-button color="primary" ><a [href]="telegramLink" target="_blank" class="icon">smart_toy</a></mat-icon></button>
+    <button type="button" (click)="onTest(f.value)" (click)="openSnackBar()" [disabled]="!form.get('chatid')!.valid || form.get('chatid')!.hasError('pattern')" style="margin-right: 15px;" mat-raised-button matTooltip="you should received a msg when verified">
+      <mat-icon mat-flat-button color="primary" >quiz</mat-icon> Verify your Chatid
+    </button>
+    <button type="button" style="margin-left: 15px;" matTooltip="Telegram Bot link" mat-raised-button>
+      <mat-icon mat-flat-button color="primary" >
+        <a [href]="telegramLink" target="_blank" class="icon">smart_toy</a>
+      </mat-icon>
+    </button>
   </div>
   <!-- dropdown for sch -->
   <mat-form-field >
@@ -17,7 +25,9 @@
     <mat-select name="sch" id="sch" formControlName="sch">
       <mat-option value="cdc">CDC</mat-option>
     </mat-select>
-    <mat-hint *ngIf="!form.get('sch')!.valid && form.get('sch')!.touched">Hint: Please select from the dropdown menu</mat-hint>
+    <mat-hint *ngIf="!form.get('sch')!.valid && form.get('sch')!.touched">
+      Hint: Please select from the dropdown menu
+    </mat-hint>
   </mat-form-field>
   <!-- dropdown for lesson type -->
   <mat-form-field >
@@ -37,7 +47,9 @@
       <mat-option value="2a">Class 2a</mat-option>
       <mat-option value="2">Class 2</mat-option>
     </mat-select>
-    <mat-hint *ngIf="!form.get('classType')!.valid && form.get('classType')!.touched">Hint: Please select from the dropdown menu</mat-hint>
+    <mat-hint *ngIf="!form.get('classType')!.valid && form.get('classType')!.touched">
+      Hint: Please select from the dropdown menu
+    </mat-hint>
   </mat-form-field>
   <!-- Lesson -->
   <mat-form-field >
@@ -45,7 +57,9 @@
     <mat-select name="lesson" id="lesson" formControlName="lesson">
       <mat-option value={{l}} *ngFor="let l of lesson">{{l}}</mat-option>
     </mat-select>
-    <mat-hint *ngIf="!form.get('lesson')!.valid && form.get('lesson')!.touched">Hint: Please select from the dropdown menu</mat-hint>
+    <mat-hint *ngIf="!form.get('lesson')!.valid && form.get('lesson')!.touched">
+      Hint: Please select from the dropdown menu
+    </mat-hint>
   </mat-form-field>
   <!-- datepicker -->
   <mat-form-field >
@@ -53,7 +67,9 @@
     <input matInput [matDatepicker]="picker" [min]="minDate" formControlName="date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-    <mat-hint *ngIf="!form.get('date')!.valid && form.get('date')!.touched">Hint: Please select a date or invalid date entered</mat-hint>
+    <mat-hint *ngIf="!form.get('date')!.valid && form.get('date')!.touched">
+      Hint: Please select a date or invalid date entered
+    </mat-hint>
   </mat-form-field>
   <!-- timing -->
   <mat-form-field >
@@ -67,11 +83,17 @@
   <mat-form-field >
     <mat-label for="comment">Comment:</mat-label>
     <textarea matInput placeholder="Looking to swap my slot to..." formControlName="comment"></textarea>
-    <mat-hint *ngIf="!form.get('comment')!.valid && form.get('comment')!.touched">Hint: Please insert what you want to exchange to</mat-hint>
+    <mat-hint *ngIf="!form.get('comment')!.valid && form.get('comment')!.touched">
+      Hint: Please insert what you want to exchange to
+    </mat-hint>
   </mat-form-field>
   <div fxLayoutAlign="space-between center" class="buttonrow">
-    <button mat-flat-button color="primary" (click)="onBack()" mat-raised-button matTooltip="Home"><mat-icon>home</mat-icon></button>
-    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid" mat-raised-button matTooltip="Submit"><mat-icon>note_add</mat-icon></button>
+    <button mat-flat-button color="primary" (click)="onBack()" mat-raised-button matTooltip="Home">
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid" mat-raised-button matTooltip="Submit">
+      <mat-icon>note_add</mat-icon>
+    </button>
   </div>
 </form>
 

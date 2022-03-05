@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Constants } from '../Constants';
 import { SwapService } from '../swap.service';
@@ -27,7 +28,8 @@ export class AddRequestComponent implements OnInit {
   constructor(
     private fb:FormBuilder,
     private router: Router,
-    private swapSvc : SwapService) { }
+    private swapSvc : SwapService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.minDate = new Date();
@@ -114,6 +116,13 @@ export class AddRequestComponent implements OnInit {
 
   onTest(chatid:string){
     console.log(chatid)
-    let telegramMsg : TelegramMsg = {chatid : +chatid, msg: "Verified", contact : "@CdcTp_bot"}
+    let telegramMsg : TelegramMsg = {chatid : +chatid, msg: "Verified from SwapLesson", contact : "@CdcTp_bot"}
+    this.swapSvc.sendTelegramMsg(telegramMsg).subscribe(
+      resp => console.log(resp)
+    );
+  }
+
+  openSnackBar() {
+    this._snackBar.open("msg sent. Please check telegram for msg", "close" ,{duration: 4000} );
   }
 }

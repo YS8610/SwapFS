@@ -11,6 +11,7 @@ export class SwapService {
   constructor(private http:HttpClient) { }
 
   getAllSwaps(){
+    // return this.http.get<SwapReq[]>("http://localhost:8080/api/swaps");
     return this.http.get<SwapReq[]>("api/swaps");
   }
 

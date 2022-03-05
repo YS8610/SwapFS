@@ -12,6 +12,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 const MATERIAL = [
@@ -20,7 +22,8 @@ const MATERIAL = [
   MatFormFieldModule,MatToolbarModule,
   MatDatepickerModule, MatDividerModule,
   MatNativeDateModule, MatCardModule,
-  MatTooltipModule
+  MatTooltipModule,MatMenuModule,
+  MatSnackBarModule
 ];
 
 @NgModule({
