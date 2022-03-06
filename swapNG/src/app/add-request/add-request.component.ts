@@ -102,6 +102,7 @@ export class AddRequestComponent implements OnInit {
     this.swapReqtoAdd.lessonTime = this.form.value.time;
     this.swapReqtoAdd.userComment = this.form.value.comment;
     this.swapReqtoAdd.lessonDate = this.form.value.date;
+    this.swapReqtoAdd.lessonDate.setHours(8) //because this is GMT+8 and SB will convert it back to GMT
     this.swapSvc.postSwap(this.swapReqtoAdd).subscribe({
       next: resp =>{
         this.form.reset();

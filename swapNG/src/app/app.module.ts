@@ -17,6 +17,9 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { DetailComponent } from './detail/detail.component';
 import { HeaderComponent } from './header/header.component';
 import { MessageComponent } from './message/message.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { HowtouseComponent } from './howtouse/howtouse.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { MessageComponent } from './message/message.component';
     HomeComponent,
     DetailComponent,
     HeaderComponent,
-    MessageComponent
+    MessageComponent,
+    HowtouseComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,13 @@ import { MessageComponent } from './message/message.component';
     FormsModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MaterialModule
+    MaterialModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {provide: DateAdapter, useClass: CustomDateAdapter}, //, deps: [MAT_DATE_LOCALE, Platform]

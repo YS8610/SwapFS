@@ -1,0 +1,40 @@
+<app-header></app-header>
+
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5px">
+
+  <mat-card fxFill>
+    <mat-card-title> <mat-icon>looks_one</mat-icon>What is needed?</mat-card-title>
+    <mat-card-content>
+      <p>
+        You will need to have a telegram account with username defined before you use this web app. To get started, you will need to get the chatid from the <a href="https://t.me/CdcTP_bot"><mat-icon>smart_toy</mat-icon> telegram bot</a> by entering /chatid which will return a string of number which will identify you.
+      </p>
+    </mat-card-content>
+  </mat-card>
+  <mat-card fxFill>
+    <mat-card-title> <mat-icon>looks_two</mat-icon>Adding Swap Request</mat-card-title>
+    <mat-card-content>
+      <p>
+        To submit a lesson swap request, you have to click the <a routerLink="/add"><mat-icon>add_circle</mat-icon></a>. Please use the verify function of the form to verify that you have entered the correct chatid. You will received a message from the bot if your chatid is entered correctly. If the chatid is entered wrongly, then you will not be able to received any notification when interested party try to contact you. This is because the bot identifies you by chatid and is the messenger between you and the interested party.
+      </p>
+    </mat-card-content>
+  </mat-card>
+  <mat-card fxFill>
+    <mat-card-title> <mat-icon>looks_3</mat-icon>Contacting the poster</mat-card-title>
+    <mat-card-content>
+      <p>
+        To contact the swap request poster, you have to click <mat-icon >message</mat-icon> button in the <a routerLink="/"><mat-icon >home</mat-icon> home page</a>. When you submit the message, the telegram bot forward it to the poster. So please make sure you leave a proper contact detail behind.
+      </p>
+    </mat-card-content>
+  </mat-card>
+  <mat-card fxFill>
+    <mat-card-title> <mat-icon>looks_4</mat-icon>Telegram Bot<mat-icon>smart_toy</mat-icon> Command</mat-card-title>
+    <mat-card-content>
+      <ul>
+        <li>/chatid - give the chatid which the bot will use to identify userComment</li>
+        <li>/swap - return all a list of your swap requests</li>
+        <li>/delete - return a list of button for you to delete your existing swap request (This is the only way to delete)</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</div>
+
