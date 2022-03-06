@@ -149,4 +149,11 @@ public class SwapController {
         return new ResponseEntity<String>(result.toString(),HttpStatus.BAD_REQUEST);
     }
 
+    @GetMapping(path = "/secure/test/{no}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> testJwt(@PathVariable String no){
+        JsonObject test = new JsonObject();
+        test.addProperty("jwt test", no);
+        return new ResponseEntity<String>(test.toString(),HttpStatus.OK);
+    }
+
 }
