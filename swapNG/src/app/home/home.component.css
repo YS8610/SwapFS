@@ -3,3 +3,8 @@ mat-card{
   margin-bottom: 7px;
 }
 
+a.icon:hover, a.icon:visited, a.icon:link, a.icon:active
+{
+    text-decoration: none;
+    color:inherit;
+}

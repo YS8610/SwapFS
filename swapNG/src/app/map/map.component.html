@@ -1,0 +1,21 @@
+<app-header></app-header>
+
+<div fx fxLayout="column" fxLayoutAlign="center center">
+
+  <google-map
+  height="300px"
+  width="500px"
+  [zoom]="zoom"
+  [center]="center"
+  [options]="options"
+  >
+  <map-marker
+    [position]="markerPositions"
+    [options]="markerOptions"
+  ></map-marker>
+  <map-info-window>Info Window content</map-info-window>
+  </google-map>
+  <p>Comfort Driving School Address: 205 Ubi Ave 4, Singapore 408805</p>
+
+</div>
+

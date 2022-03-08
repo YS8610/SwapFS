@@ -46,4 +46,10 @@ export class Constants{
 
   static telegramBotLink = "https://t.me/CdcTP_bot";
 
+  static COORD_CDC : google.maps.LatLngLiteral ={
+    lat: 1.3359264545284422,
+    lng: 103.8966768393828
+}
+
+
 }

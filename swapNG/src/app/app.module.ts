@@ -20,6 +20,8 @@ import { MessageComponent } from './message/message.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HowtouseComponent } from './howtouse/howtouse.component';
+import { MapComponent } from './map/map.component';
+import { GoogleMapsModule } from '@angular/google-maps'
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { HowtouseComponent } from './howtouse/howtouse.component';
     DetailComponent,
     HeaderComponent,
     MessageComponent,
-    HowtouseComponent
+    HowtouseComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { HowtouseComponent } from './howtouse/howtouse.component';
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    GoogleMapsModule
   ],
   providers: [
     {provide: DateAdapter, useClass: CustomDateAdapter}, //, deps: [MAT_DATE_LOCALE, Platform]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Constants } from '../Constants';
 import { SwapService } from '../swap.service';
 import { SwapReq } from '../swapReq.model';
 
@@ -9,6 +10,23 @@ import { SwapReq } from '../swapReq.model';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+
+  zoom = 15;
+  options: google.maps.MapOptions = {
+    mapTypeId: 'hybrid',
+    zoomControl: false,
+    scrollwheel: true,
+    disableDoubleClickZoom: true,
+    maxZoom: 25,
+    minZoom: 8,
+  };
+
+  center: google.maps.LatLngLiteral = Constants.COORD_CDC;
+
+  markerOptions: google.maps.MarkerOptions = { draggable: true };
+  markerPositions: google.maps.LatLngLiteral= Constants.COORD_CDC;
+
+
 
   swapid ="";
   hasError = false;
