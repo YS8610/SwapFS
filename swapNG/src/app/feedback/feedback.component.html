@@ -1,0 +1,8 @@
+<app-header></app-header>
+<form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5px" (ngSubmit)="onSubmit(FeedbackForm)" #FeedbackForm="ngForm" >
+
+  <label for="feedback">If you have any feedback, you can type it below and send it to us</label>
+  <textarea matInput placeholder="Area of Improvements..." name="feedback" ngModel required></textarea>
+  <button mat-flat-button color="primary" type="submit" [disabled]="!FeedbackForm.form.valid">Submit</button>
+
+</form>

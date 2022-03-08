@@ -21,7 +21,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HowtouseComponent } from './howtouse/howtouse.component';
 import { MapComponent } from './map/map.component';
-import { GoogleMapsModule } from '@angular/google-maps'
+import { GoogleMapsModule } from '@angular/google-maps';
+import { FeedbackComponent } from './feedback/feedback.component'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { GoogleMapsModule } from '@angular/google-maps'
     HeaderComponent,
     MessageComponent,
     HowtouseComponent,
-    MapComponent
+    MapComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,

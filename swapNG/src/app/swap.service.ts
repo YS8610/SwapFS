@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SwapReq, TelegramMsg } from './swapReq.model';
+import { Feedback, SwapReq, TelegramMsg } from './swapReq.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,11 @@ export class SwapService {
   sendTelegramMsg(telegramMsg : TelegramMsg){
     const urlTelegram = "api/send";
     return this.http.post<TelegramMsg>(urlTelegram,telegramMsg);
+  }
+
+  sendFeedback(feedback:Feedback){
+    const urlFeedback = "api/feedback"
+    return this.http.post<Feedback>(urlFeedback,feedback);
   }
 }
 

@@ -18,3 +18,7 @@ export interface TelegramMsg{
   contact : string;
   msg: string;
 }
+
+export interface Feedback{
+  feedback:string;
+}
